@@ -38,13 +38,13 @@ public class WorkLogsInfoServiceImpl extends ServiceImpl<WorkLogsInfoMapper, Wor
     @Override
     public int updateWorkLogsInfo(WorkLogsInfo workLogsInfo) {
         UpdateWrapper<WorkLogsInfo> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("logId", workLogsInfo.getLogId());
+        updateWrapper.eq("log_id", workLogsInfo.getLogId());
         updateWrapper.eq("seq", workLogsInfo.getSeq());
         return workLogsInfoMapper.update(workLogsInfo, updateWrapper);
     }
 
     @Override
     public WorkLogsInfo getWorkLogsInfoById(String logId, int seq) {
-        return workLogsInfoMapper.selectOne(new QueryWrapper<WorkLogsInfo>().eq("logId", logId).eq("seq", seq));
+        return workLogsInfoMapper.selectOne(new QueryWrapper<WorkLogsInfo>().eq("log_id", logId).eq("seq", seq));
     }
 }
