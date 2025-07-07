@@ -1,0 +1,12 @@
+server:
+  port: 8088
+
+spring:
+  application:
+    name: WorkLogs
+
+  datasource:
+    password: worklogs
+    username: worklogs
+    url: jdbc:postgresql://localhost:5432/worklogs
+    driver-class-name: org.postgresql.Driver
