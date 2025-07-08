@@ -1,7 +1,6 @@
 package com.work.logs.service;
 
 import com.work.logs.entity.WorkLogsInfo;
-import com.work.logs.mapper.WorkLogsInfoMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

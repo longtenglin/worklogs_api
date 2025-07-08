@@ -2,6 +2,7 @@ package com.work.logs.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.update.UpdateWrapper;
+import com.work.logs.constant.EntityFieldsConst;
 import com.work.logs.entity.WorkLogsInfo;
 import com.work.logs.mapper.WorkLogsInfoMapper;
 import com.work.logs.service.IWorkLogsInfoService;
@@ -27,7 +28,9 @@ public class WorkLogsInfoServiceImpl extends ServiceImpl<WorkLogsInfoMapper, Wor
 
     @Override
     public List<WorkLogsInfo> getAllWorkLogsInfo() {
-        return workLogsInfoMapper.selectList(null);
+        return workLogsInfoMapper.selectList(
+                new QueryWrapper<WorkLogsInfo>()
+                        .eq(EntityFieldsConst.DELETE_FLG, EntityFieldsConst.DELETE_NO_VALUE));
     }
 
     @Override
@@ -38,13 +41,16 @@ public class WorkLogsInfoServiceImpl extends ServiceImpl<WorkLogsInfoMapper, Wor
     @Override
     public int updateWorkLogsInfo(WorkLogsInfo workLogsInfo) {
         UpdateWrapper<WorkLogsInfo> updateWrapper = new UpdateWrapper<>();
-        updateWrapper.eq("log_id", workLogsInfo.getLogId());
-        updateWrapper.eq("seq", workLogsInfo.getSeq());
+        updateWrapper.eq(EntityFieldsConst.LOG_ID, workLogsInfo.getLogId());
+        updateWrapper.eq(EntityFieldsConst.SEQ, workLogsInfo.getSeq());
         return workLogsInfoMapper.update(workLogsInfo, updateWrapper);
     }
 
     @Override
     public WorkLogsInfo getWorkLogsInfoById(String logId, int seq) {
-        return workLogsInfoMapper.selectOne(new QueryWrapper<WorkLogsInfo>().eq("log_id", logId).eq("seq", seq));
+        return workLogsInfoMapper.selectOne(
+                new QueryWrapper<WorkLogsInfo>()
+                        .eq(EntityFieldsConst.LOG_ID, logId)
+                        .eq(EntityFieldsConst.SEQ, seq));
     }
 }
