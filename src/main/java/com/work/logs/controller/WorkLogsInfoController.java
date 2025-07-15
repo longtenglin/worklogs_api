@@ -31,7 +31,7 @@ public class WorkLogsInfoController {
     }
 
     @PutMapping("add")
-    public JSONObject add(@RequestBody WorkLogsInfo params) {
+    public JSONObject add(@RequestBody JSONObject params) {
         int workLogsInfoList = workLogsInfoService.addWorkLogsInfo(params);
         return ResponseUtil.success(workLogsInfoList);
     }

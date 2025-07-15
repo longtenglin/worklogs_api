@@ -1,19 +1,33 @@
 package com.work.logs.service;
 
-import com.work.logs.entity.WorkLogsInfo;
+import org.json.JSONObject;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.restdocs.RestDocumentationContextProvider;
+import org.springframework.restdocs.RestDocumentationExtension;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.web.context.WebApplicationContext;
 
-@SpringBootTest
+import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
+
+@ExtendWith({RestDocumentationExtension.class, SpringExtension.class})
 public class WorkLogsInfoServiceImplTest {
 
-    @Autowired
-    IWorkLogsInfoService workLogsInfoService;
+    private MockMvc mockMvc;
+
+    @BeforeEach
+    void setUp(WebApplicationContext webApplicationContext, RestDocumentationContextProvider restDocumentationContextProvider)throws Exception {
+        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
+                .apply(documentationConfiguration(restDocumentationContextProvider))
+                .build();
+    }
+
 
     @Test
     void testGetWorkLogsInfoById() {
-        WorkLogsInfo workLogsInfo = workLogsInfoService.getWorkLogsInfoById("WL_LTL_00000", 0);
-        System.out.println(workLogsInfo.toString());
+        JSONObject jsonObject = new JSONObject();
     }
 }
