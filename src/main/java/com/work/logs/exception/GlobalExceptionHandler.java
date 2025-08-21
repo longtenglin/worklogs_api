@@ -1,19 +1,15 @@
 package com.work.logs.exception;
 
-import org.json.JSONObject;
+import com.alibaba.fastjson.JSONObject;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
-    @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> exception(Exception e) {
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body("内部服务器错误: " + e.getMessage());
-    }
 
     @ExceptionHandler(LtlJsonToEntityException.class)
     public ResponseEntity<JSONObject> ltlJsonToEntityException(LtlJsonToEntityException e) {

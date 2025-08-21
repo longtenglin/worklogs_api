@@ -1,7 +1,11 @@
 package com.work.logs.util;
 
+import com.alibaba.fastjson.JSONObject;
 import com.work.logs.constant.ResponseConst;
-import org.json.JSONObject;
+
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 请求响应内容的构建工具类
@@ -30,6 +34,7 @@ public class ResponseUtil {
      */
     public static JSONObject success(Object data) {
         JSONObject response = new JSONObject();
+        Map<String, Object> map = new HashMap<String, Object>();
         response.put(CUSTOM_CODE, ResponseConst.CODE_SUCCESS);
         response.put(CUSTOM_MESSAGE, ResponseConst.MESSAGE_SUCCESS);
         response.put(CUSTOM_DATA, data);

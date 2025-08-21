@@ -3,9 +3,9 @@ package com.work.logs.util;
 import java.lang.reflect.Field;
 import java.util.Iterator;
 
+import com.alibaba.fastjson.JSONObject;
 import com.work.logs.exception.LtlJsonToEntityException;
 import lombok.extern.slf4j.Slf4j;
-import org.json.JSONObject;
 
 import static com.work.logs.constant.ResponseConst.CODE_ERROR_9001;
 
@@ -16,7 +16,7 @@ public class RequestUtils<T> {
         try {
             T entity = tClass.getDeclaredConstructor().newInstance();
 
-            for (Iterator<String> it = obj.keys(); it.hasNext(); ) {
+            for (Iterator<String> it = obj.keySet().iterator(); it.hasNext(); ) {
                 String key = it.next();
                 Field field = tClass.getDeclaredField(key);
                 field.setAccessible(true);

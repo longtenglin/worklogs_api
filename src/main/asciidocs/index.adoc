@@ -1,0 +1,24 @@
+= Learn Spring REST Docs
+:author: lijun
+:email: 625995897@qq.com
+:revnumber: v1.0
+:toc: left
+:toc-title: 目录
+
+== add
+.request
+include::{snippets}/workLogsInfo/add/http-request.adoc[]
+.请求体示例
+include::{snippets}/workLogsInfo/add/request-body.adoc[]
+.请求参数说明
+include::{snippets}/workLogsInfo/add/request-fields.adoc[]
+.response
+include::{snippets}/workLogsInfo/add/http-response.adoc[]
+
+== list
+.request
+include::{snippets}/workLogsInfo/list/http-request.adoc[]
+.response
+include::{snippets}/workLogsInfo/list/http-response.adoc[]
+.响应内容
+include::{snippets}/workLogsInfo/list/response-fields.adoc[]
